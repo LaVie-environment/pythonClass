@@ -1,0 +1,35 @@
+class Rectangle:
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    def calculate_area(self):
+        return self.length * self.width
+
+# Function to get user input with exception handling
+def get_user_input(prompt):
+    while True:
+        try:
+            user_input = float(input(prompt))
+            if user_input < 0:
+                raise ValueError("Please enter a non-negative number.")
+            return user_input
+        except ValueError as e:
+            print(f"Error: {e}")
+            print("Please enter a valid number.")
+
+# Main program
+if __name__ == "__main__":
+    try:
+        # Get user input for length and width
+        length = get_user_input("Enter the length of the rectangle: ")
+        width = get_user_input("Enter the width of the rectangle: ")
+
+        # Create a Rectangle object
+        rectangle = Rectangle(length, width)
+
+        # Calculate and print the area
+        area = rectangle.calculate_area()
+        print(f"The area of the rectangle is: {area}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
